@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 import time
+#Check commit
 
 class Test_goService(unittest.TestCase):
     GO_SERVICE_URL = "http://localhost:3000/health"
