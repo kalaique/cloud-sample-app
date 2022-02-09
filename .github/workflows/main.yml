@@ -23,7 +23,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Build the stack
-    run: docker compose up -d --build
+        run: docker-compose -f "docker-compose.yml" up -d --build   
       - name: Test Frontend
         run: docker exec frontend yarn test
       - name: Test py backend
@@ -44,4 +44,4 @@ jobs:
       #- name: e2e test
       - run: python e2e_tests/Test_goService.py
       - name: Stop stack
-        run: docker compose down
+        run: docker compose down   
