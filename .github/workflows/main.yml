@@ -22,10 +22,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      - run: pip install -r e2e_tests/requirements.txt
       - name: Build the stack
         run: docker compose up -d --build
       - name: Test Frontend
@@ -34,6 +30,10 @@ jobs:
         run: docker exec backend-py python manage.py test
       - name: Test go backend
         run: docker exec backend-go go test -run="" ./pkg/...
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - run: pip install -r e2e_tests/requirements.txt
       - uses: nanasess/setup-chromedriver@v1
         with:
         # Optional: do not specify to match Chrome's version
