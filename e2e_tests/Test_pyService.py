@@ -5,11 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 import time
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-
-
-
-
 
 class Test_pyService(unittest.TestCase):
     PY_SERVICE_URL = "http://localhost:8000/health"

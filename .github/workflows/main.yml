@@ -50,6 +50,7 @@ jobs:
       #- name: E2E Tests setup
       #  run: pip install -r requirements.txt
       #- name: e2e test
-      - run: python e2e_tests/Test_pyService.py
+      #- run: python e2e_tests/Test_pyService.py
+      - run: python e2e_tests/TestSuites.py
       - name: Stop stack
         run: docker compose down  
