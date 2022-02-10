@@ -11,12 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the stack
         run: docker compose up -d --build   
-      - name: Test Frontend
-        run: docker exec frontend yarn test
-      - name: Test py backend
-        run: docker exec backend-py python manage.py test
-      - name: Test go backend
-        run: docker exec backend-go go test -run="" ./pkg/... 
+    
       # INstall Node on the runner
       - name: Install Node
         uses: actions/setup-node@v1
@@ -25,9 +20,8 @@ jobs:
 
       # Install the newman command line utility and also install the html extra reporter
       - name: Install newman
-        run: |
-         npm install newman
-         npm install newman-reporter-htmlextra
+        run: npm install newman
+        
 
       # Make directory to upload the test results
       - name: Make Directory for results
@@ -36,8 +30,8 @@ jobs:
       # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run: |
-         newman run ./api_test/oni_quotes_api_tests.postman_collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme  > testResults/runreport1.html
-         newman run ./api_test/oni_user_api_tests.postman_collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme  > testResults/runreport2.html
+         newman run ./api_test/oni_quotes_api_tests.postman_collection.json 
+         newman run ./api_test/oni_user_api_tests.postman_collection.json 
       # Upload the contents of Test Results directory to workspace
       - name: Output the run Details
         uses: actions/upload-artifact@v2
