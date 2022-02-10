@@ -5,6 +5,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 import time
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+
+
 
 
 
@@ -43,7 +46,9 @@ class Test_pyService(unittest.TestCase):
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
         #d = webdriver.Chrome('/home/<user>/chromedriver',chrome_options=chrome_options)
-        driver = webdriver.Chrome('/usr/local/bin/chromedriver',chrome_options=chrome_options)
+        s = Service('/usr/local/bin/chromedriver')
+        #driver = webdriver.Chrome(service=s)
+        driver = webdriver.Chrome(service=s,chrome_options=chrome_options)
         driver.implicitly_wait(20)
         driver.get(self.FRONTEND_URL)
         driver.maximize_window()
