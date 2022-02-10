@@ -35,7 +35,7 @@ class Test_pyService(unittest.TestCase):
         # Get color in UI
         #s = Service(r"C:\Users\User\Downloads\chromedriver.exe")
         #driver = webdriver.Chrome(service=s)
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome('/usr/local/bin/chromedriver')
         driver.implicitly_wait(20)
         driver.get(self.FRONTEND_URL)
         driver.maximize_window()
