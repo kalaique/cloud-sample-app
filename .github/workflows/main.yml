@@ -19,6 +19,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - uses: nanasess/setup-chromedriver@v1
+      - run: |
+           export DISPLAY=:99
+           chromedriver --url-base=/wd/hub &
+           sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
       - name: Build the stack
         run: docker compose up -d --build   
       - name: Test Frontend
@@ -31,14 +36,9 @@ jobs:
         with:
           python-version: '3.x'
       - run: pip install -r e2e_tests/requirements.txt
-      - uses: nanasess/setup-chromedriver@v1
-        with:
-        # Optional: do not specify to match Chrome's version
-          chromedriver-version: '97.0.4692.99'
-      - run: chromedriver --url-base=/wd/hub &
       #- name: E2E Tests setup
       #  run: pip install -r requirements.txt
       #- name: e2e test
       - run: python e2e_tests/Test_goService.py
       - name: Stop stack
-        run: docker compose down   
+        run: docker compose down  
