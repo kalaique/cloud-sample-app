@@ -48,7 +48,7 @@ class Test_pyService(unittest.TestCase):
         #d = webdriver.Chrome('/home/<user>/chromedriver',chrome_options=chrome_options)
         s = Service('/usr/local/bin/chromedriver')
         #driver = webdriver.Chrome(service=s)
-        driver = webdriver.Chrome(service=s,options=options)
+        driver = webdriver.Chrome(service=s,options=chrome_options)
         driver.implicitly_wait(20)
         driver.get(self.FRONTEND_URL)
         driver.maximize_window()
