@@ -37,7 +37,8 @@ jobs:
       # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run: |
-         newman run ./api_test/oni_quotes_api_tests.postman_collection.json 
+         #newman run ./api_test/oni_quotes_api_tests.postman_collection.json 
+         newman run ./api_test/oni_user_api_tests.postman_collection.json 
       # Upload the contents of Test Results directory to workspace
       #- name: Output the run Details
        # uses: actions/upload-artifact@v2
