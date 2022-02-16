@@ -35,10 +35,12 @@ jobs:
       #  run: mkdir -p testResults
 
       # Run the POSTMAN collection
-      - name: Run POSTMAN collection
+      - name: Run POSTMAN collection User api
         run: |
-         #newman run ./api_test/oni_quotes_api_tests.postman_collection.json 
-         newman run ./api_test/oni_user_api_tests.postman_collection.json 
+          newman run ./api_test/oni_user_api_tests.postman_collection.json 
+      - name: Run POSTMAN collection Quotes api
+        run: |
+         newman run ./api_test/oni_quotes_api_tests.postman_collection.json 
       # Upload the contents of Test Results directory to workspace
       #- name: Output the run Details
        # uses: actions/upload-artifact@v2
