@@ -38,7 +38,10 @@ jobs:
         run: |
           newman run ./api_test/oni_user_api_tests.postman_collection.json 
       - name: Run POSTMAN collection Quotes api
-        continue-on-error: true
+        #DELETE quote API failed as the expected response status code per API
+        #document(http://localhost:3000/documentation/yaml) is 201 but the actual
+        #response status code in 204. In this case, even if the previous step fails, this makes it continue after it fails
+        continue-on-error: true 
         run: |
          newman run ./api_test/oni_quotes_api_tests.postman_collection.json 
       # Upload the contents of Test Results directory to workspace
